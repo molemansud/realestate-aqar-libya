@@ -8,13 +8,14 @@
    <!-- Tailwind CSS Library  -->
  <script src="https://cdn.tailwindcss.com"></script>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>Aqar.Net </title>
 
     <link rel="stylesheet" href="styles/mainpage.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
 
-  <body>
+  
 
     <header>
       <div>
@@ -29,19 +30,36 @@
           <a href="#Contact">Contact</a>
         </nav>
         
+         <!-- burger icon -->
+  <div class="burger" onclick="toggleMenu()">☰</div>
+</header>
+
+<!-- side menu -->
+<div class="side-menu" id="sideMenu">
+  <a href="#">Home
+    
+  </a>
+  <a href="#">Services</a>
+  <a href="#">Properties</a>
+  <a href="#">About</a>
+  <a href="#">Contact</a>
+</div>
     </header>
 
     <main>
-      <section class ="hero">
-        <div class="hero-content">
+      <section class ="hero" style="background-color: brown;">
+        <div class="hero-content" style="background-color:aquamarine">
 
-           <button style="position: relative;margin-bottom: 20px; color:rgb(255, 255, 255)" class="Location-button">Libya- Tripoli
-            <img src="Images/Green Circle.png" alt="Active Icon" style="width: 10px; height: 10px;position: absolute;top:83px;left:5px;">
+   <button style="position: relative;margin-bottom: 20px; color:rgb(255, 255, 255)" class="Location-button">Libya- Tripoli
+         
            </button>
+
+          
 
         <h2>Find your ideal property in Libya with ease and clarity </h2>
         <p>An organized real estate platform that allows you to browse listings, filter by price and location, and contact owners directly—moving beyond the chaos of Facebook groups</p>
       <!-- contact us button -->
+
 <!-- <button class="fancy-btn">
   <div class="btn-overlay">
     <div class="btn-fill"></div>
@@ -62,7 +80,7 @@
   <span class="btn-text">Contacts</span>
 </button> -->
 
-
+<!-- Tailwaind CSS version of the contact us button -->
 <button
   class="cursor-pointer relative bg-white py-2 rounded-full min-w-[8.5rem] min-h-[2.92rem] group max-w-full flex items-center justify-start hover:bg-black transition-all duration-[0.8s] ease-[cubic-bezier(0.510,0.026,0.368,1.016)] shadow-[inset_1px_2px_5px_#00000030]"
 >
@@ -111,12 +129,33 @@
 
 
 
-        <div>
+        <div style = "position :relative;">
           <img src="Images/Kitchen.jpg">
+           <div class="overlay">
+      <div class="icons">
+          <img src="Images/icon1.png">
+          <img src="Images/icon2.png">
+          <img src="Images/icon3.png">
+          <img src="Images/icon4.png">
+          <img src="Images/icon5.png">
+      </div>
+
+      <p>Web Quality Contains Starts</p>
         </div>
 
       </section>
     </main>
-    <button>xx</button>
+
+
+
+
+
+
+    <!--second section-->
+
+
+    
+
+    <script src="script1.js"></script>
   </body>
 </html>

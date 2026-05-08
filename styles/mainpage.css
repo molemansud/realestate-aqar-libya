@@ -3,10 +3,28 @@
   padding:0;
   box-sizing:border-box;
 }
+/* this used to avoid overflow */
+html, body{
+  overflow-x: hidden;
+}
+
+img{
+  max-width:100%;
+  display:block;
+}
+
+section{
+  overflow:hidden;
+}
+
 
 body{
   padding-bottom: 1000px;
 }
+
+
+
+
 
 header{
   display:flex;
@@ -18,6 +36,7 @@ header{
   left: 0;
   right: 0;
   background-color: transparent;
+   z-index:2000;
  
 }
 
@@ -41,157 +60,141 @@ header  a {
    
 }
 
+
+.burger {
+  display: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: white;
+  margin-right: 20px;
+ 
+}
+/* side menu hidden by default */
+.side-menu{
+  position:fixed;
+  top:0;
+  right:-250px; /* hide outside screen */
+  width:200px;
+  height:100vh;
+  background:rgba(142, 142, 142, 0.703);
+  padding-top:80px;
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+  transition:0.3s;
+  z-index: 1500;
+}
+.side-menu a{
+  color:white;
+  text-decoration:none;
+  padding:15px 25px;
+}
+.side-menu a:hover{
+  background-color:rgba(255, 255, 255, 0.3);
+}
+
+@media (max-width: 832px){
+
+  header nav{
+    display:none;
+  }
+
+  .burger{
+    display:block;
+  }
+
+}
+
+
+
+
 .hero{
-  display: flex;
-  align-items: center;
+  /* display: flex;
+  align-items: flex-start;
   justify-content: space-between;
   gap:6rem;
   background-color: rgb(0, 0, 0);
   width:100%;
-  padding: 100px 50px; /* better than margin chaos */
+  padding: 100px 50px; better than margin chaos */
+   display:flex;
+  align-items:center;      /* vertical center */
+  justify-content:center;  /* horizontal center */
+  
+ align-items: flex-start;
+  background-color:black;
+  width:100%;
+  min-height:100vh;        /* fill screen height */
+  padding:100px 50px;
+  position:relative;
+ 
 }
  .hero-content{
- flex:1;
+ 
+ width:60%;
   margin:0; /* remove that 150px push */
+ 
   
 }
 .hero-content h2 {
-  width:400px;
-  margin-bottom: 25px;
-  color: white;
-  font-size:2.5rem
+   max-width:450px;
+  margin-bottom:25px;
+  color:white;
+  font-size:2.5rem;
  
 }
 .hero-content p {
-  width:400px;
+  max-width:450px;
   font-size:1.2rem;
-  margin-bottom: 25px;
-  color: white;
+  margin-bottom:25px;
+  color:white;
 }
-.Location-button {
-  margin-top: -350px;
-  margin-left:0px;
-  background-color: rgba(208, 206, 203, 0.703);
-  border-radius: 10px;
-  width:150px;
-  border-style: none;
-  height: 17px;
-  text-align: right;
-  padding-right: 30px;
-  
 
+.Location-button{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+
+  background-color: rgba(208,206,203,0.7);
+  border:none;
+  border-radius:999px;
+
+  padding:2px 30px;      /* controls height */
+  font-size:12px;        /* controls height */
+  line-height:1;         /* removes extra text space */
+
+  color:white;
 }
+
+
+
+
 .hero img {
-  flex:1;
-  
+  flex:1;  
   width:100%;
   height:500px;
   border-radius:10px;
-  margin-top:-80px ;
   object-fit: cover;
+  display: block;
   
 }
 
-
-/* the contact us button */
-.fancy-btn {
-  cursor: pointer;
-  position: relative;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 8px 0;
-  min-width: 8.5rem;
-  min-height: 2.92rem;
-  border-radius: 9999px;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  color: white;
-
-  border-style: none;
-  transition: all 0.5s cubic-bezier(0.510, 0.026, 0.368, 1.016);
-  box-shadow: inset 1px 2px 5px rgba(0,0,0,0.5);
-}
-
-/* overlay */
-.btn-overlay {
+.overlay {
   position: absolute;
-  inset: 0;
+  right:5px;
+  bottom:5px;
+background-color: rgb(190, 243, 243);
+height:130px;
+border-radius: 20px;
+width:300px;
+}
+.icons {
   display: flex;
-  align-items: center;
-  padding: 2px 4px;
-  z-index: 1;
+ padding-top: 10px;
 }
-
-/* green sliding fill */
-.btn-fill {
-  position: absolute;
-  inset: 0;
-  width: 0%;
-  background: #ffffff;
-  transition: width 0.8s cubic-bezier(0.510, 0.026, 0.368, 1.016);
-  z-index: 0;
+.icons img {
+  width: 20px;
+  height: 20px;
 }
-
-.fancy-btn:hover .btn-fill {
-  width: 100%;
-}
-
-/* circle */
-.btn-circle {
-  position: absolute;
-  left: 4px;              /* start on the left */
-  top: 50%;
-  transform: translateY(-50%);
-  
-  height: calc(100% - 8px);
-  aspect-ratio: 1/1;
-  border-radius: 50%;
-  background: #ffffff;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  box-shadow: inset 1px -1px 3px black;
-
-  transition: all 1s cubic-bezier(0.510, 0.026, 0.368, 1.016);
-  z-index: 2;
-}
-
-/* 🚀 MOVE IT RIGHT ON HOVER */
-.fancy-btn:hover .btn-circle {
-  left: calc(100% - 2.92rem); /* move to right side */
-  background: black;
-}
-
-/* icon */
-.btn-icon {
-  width: 0.8rem;
-  height: 0.8rem;
-  color: black;
-  transition: all 0.3s cubic-bezier(0.510, 0.026, 0.368, 1.016);
-}
-
-.fancy-btn:hover .btn-icon {
-  color: white;
-  transform: rotate(-45deg);
-}
-
-/* text */
-.btn-text {
-  position: relative;
-  z-index: 2;
-  padding-left: 3.4rem;
-  padding-right: 1.1rem;
-  transition: all 0.5s cubic-bezier(0.510, 0.026, 0.368, 1.016);
-}
-
-.fancy-btn:hover .btn-text {
-  padding-left: 1.1rem;
-  padding-right: 3.4rem;
-  color: black;
-}
-
 /* @media (max-width: 768px) {
   .hero {
     flex-direction: column;
@@ -240,6 +243,9 @@ header  a {
   list-style:armenian;
   padding-right:70px;
 }
+.side-menu{
+  display: none;
+}
 }
 
 @media(min-width: 1030px) and (max-width: 1174px) {
@@ -253,12 +259,15 @@ header  a {
   list-style:armenian;
   padding-right:40px;
 }
+.side-menu{
+  display: none;
+}
 }
 
 @media(min-width: 833px) and (max-width: 1029px) {
   .hero {
     gap: 3rem;
-    background-color: rgb(0, 0, 0);
+    background-color: rgb(239, 19, 19);
 
   }
   header nav {
@@ -267,13 +276,13 @@ header  a {
 }
 .hero img {
   flex:1;
-  
-  width:100%;
   height:500px;
   border-radius:10px;
-  margin-top:-10px ;
   object-fit: cover;
   
+}
+.side-menu{
+  display: none;
 }
 }
 
@@ -284,14 +293,19 @@ header  a {
     background-position: center;
     background-repeat: no-repeat;
     min-height: 100vh;
-    
-    /*the white gap dealing */
+    width: 100%;;
+    /*fix the huge text */
+     flex-direction: column;
+    text-align: center;
+    padding:120px 20px 60px;
+    align-items: center;
     
   }
-  header nav {
-  display:flex;
-  list-style:armenian;
-}
+  .hero-content h2{
+    font-size:1.8rem;
+     justify-content: center;
+  }
+  
 .hero img {
   display: none;
 }
@@ -300,4 +314,8 @@ header a {
   padding: 20px 10px;
 }
 
+}
+
+@media (max-width: 630px) {
+ 
 }
